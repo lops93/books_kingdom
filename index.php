@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<?php include("layout/head.php");?>
+<?php include("src/ui/head.php");?>
 
 <body>
 
-  <?php include("layout/sidebar.php");?>
+  <?php include("src/ui/sidebar.php");?>
   <!-- Conteudo da Página -->
   <header>
     <h1>Books Kingdom</h1>
