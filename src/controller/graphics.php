@@ -3,8 +3,8 @@ header('Content-Type: application/json');
 include_once('config.php');
 
 if ( isset($_GET["grafico1"])=='1' ) {
-  $query = "select nome_plano, round(sum(valor),2) as valor from empresas_cadastradas 
-inner join plano on plano_contratado = cod_plano group by nome_plano;";
+  $query = "select titulo, qtde_votos
+  from tbl_livros where genero is not null group by titulo order by qtde_votos desc limit 10;";
 
 $result = $con->query($query);
 

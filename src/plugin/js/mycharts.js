@@ -1,19 +1,19 @@
 $(document).ready(function() {
     $.ajax({
-        url: "http://localhost:8000/controller/graphics.php?grafico1=1",
+        url: "http://localhost:8000/src/controller/graphics.php?grafico1=1",
         method: "GET",
         success: function(data) {
           //console.log(data);
-          var nome_plano = [];
-          var valor = [];
+          var titulo = [];
+          var qtde_votos = [];
     
           for(var i in data) {
-            nome_plano.push("Plano " + data[i].nome_plano);
-            valor.push(data[i].valor);
+            titulo.push("Plano " + data[i].titulo);
+            qtde_votos.push(data[i].qtde_votos);
           }
     
           var chartdata = {
-            labels: nome_plano,
+            labels: titulo,
             datasets : [
               {
                 label: 'Valor total por plano',
@@ -21,7 +21,7 @@ $(document).ready(function() {
                 borderColor: 'rgb(255, 99, 132)',
                 hoverBackgroundColor: 'rgba(200, 200, 200, 1)',
                 hoverBorderColor: 'rgba(200, 200, 200, 1)',
-                data: valor
+                data: qtde_votos
               }
             ]
           };
@@ -29,8 +29,9 @@ $(document).ready(function() {
           var ctx = document.getElementById('myChart').getContext('2d');
     
           var myBarChart = new Chart(ctx, {
-            type: 'bar',
+            type: 'horizontalBar',
             data: chartdata
+            
           });
         },
         error: function(data) {
