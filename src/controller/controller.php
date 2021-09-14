@@ -4,6 +4,7 @@ require_once(dirname(__FILE__)."/config.php");
 class Livro {
         private $table = "tbl_livros";
         public $log = "../log/dados.log";
+        
 
         function getData($con) {
                 $query = "SELECT id, titulo , autor, editora, avaliacao, qtde_votos,preco
@@ -14,32 +15,31 @@ class Livro {
                 return $result;
         }
 
-        function getPlans($con){
-                $qplano = "SELECT * FROM plano";
-                $result = $con->query($qplano);
-                if($result){
-                    while ($row = mysqli_fetch_array($result)) {
-                      echo '
-                      <div class="card mb-4 box-shadow">
-                          <div class="card-header">
-                              <h4>'.$row["nome_plano"].'</h4>
-                          </div>
-                          <div class="card-body">
-                              <h1 class="card-title pricing-card-title">$'.$row["valor"].'0 <small class="text-muted">/ month</small></h1>
-                              <ul class="list-unstyled mt-3 mb-4">
-                                <li>Up to '.$row["plano_internet"].' GB</li>
-                                <li>'.($row["plano_ligacoes"] == 'ilimitada' ? "Unlimited calls" : $row["plano_ligacoes"]." Minutes").'</li>
-                                <li>'.$row["plano_tv"].'</li>
-                              </ul>
-                              <button type="button" class="btn btn-lg btn-block btn-outline-primary">Sign up for free</button>
-                            </div>
-                      </div>';
-                      }
-                }else{
-                    echo("Erro: " .mysqli_error($con));
-                }
-                
+        
+        function getQtde() {
+            global $con;
+            $query = "SELECT *
+            FROM " . $this->table ." where genero is not null group by titulo";
+            $result = $con->query($query);
+            $num_rows = $result->num_rows;
+
+            echo $num_rows;
         }
+
+        function getVotos() {
+            global $con;
+            $query = "SELECT sum(qtde_votos) as qtd
+            FROM (select * from " . $this->table ." group by titulo) as tbl;";
+            $result = $con->query($query);
+            $row = $result->fetch_row();
+
+            echo $row[0];
+
+        }
+
+
+
+
 
         function add_company($con){
             $empresa = $_GET['empresa'];
@@ -84,28 +84,4 @@ function  select_plan($con){
         }
     }
 
-    function show_tbl($con){
-        $query = "SELECT nome_empresa,setor_empresa,b.nome_plano,data_fim
-        FROM empresas_cadastradas A JOIN plano B on plano_contratado = cod_plano";
-        $result = $con->query($query);
-        $user_arr = array();
-        if($result){
-            while ($row = mysqli_fetch_array($result)) {
-              echo '
-              <tr>
-                <td>'.$row["nome_empresa"].'</td>
-                <td>'.$row["setor_empresa"].'</td>
-                <td>'.$row["nome_plano"].'</td>
-                <td>'.$row["data_fim"] = null ? "<span class='badge bg-danger'>inativo</span>" 
-                : "<span class='badge bg-success'>ativo</span>".'</td>
-            </tr>
-              ';
-              $user_arr[] = array($row["nome_empresa"],$row["setor_empresa"],$row["nome_plano"],$row["data_fim"]);
-              }
-        }else{
-            echo("Erro: " .mysqli_error($con));
-        }
-        $serialize_user_arr = serialize($user_arr);
-        echo"<textarea name='export_data' style='display: none;'>".$serialize_user_arr."</textarea>";
-    }
     ?>

@@ -119,3 +119,14 @@ table.dataTable thead .sorting_desc {
   color: #fff;
 }
 /*  Tabela relatorio */
+/*  informações página  */
+
+.teste {
+  background-image: linear-gradient(
+    -20deg
+    , #f058bd 0%, #db49aa 100%) !important;
+  margin: 1%;
+  border-radius: .25rem;
+  border: 1px solid rgba(26,54,126,0.125);
+  background-clip: border-box;
+}

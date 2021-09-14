@@ -1,3 +1,4 @@
+<?php include("src/controller/controller.php");?>
 <!DOCTYPE html>
 <html>
 <?php include("src/ui/head.php");?>
@@ -10,13 +11,42 @@
     <h1>Books Kingdom</h1>
   </header>
   <div class="main">
-    <div class="container">
+    <div class="container-fluid">
+      <!--informações -->
+      <div class="row">
+        <div class="col teste">
+          <h3>Número de livros cadastrados</h3>
+          <?php 
+          $livro = new Livro();
+          $livro->getQtde();      
+          ?>
+        </div>
+        <div class="col teste">
+        <h3>Número de votos no total</h3>
+        <?php 
+          $livro = new Livro();
+          $livro->getVotos();      
+          ?>
+        </div>
+        <div class="col teste">
+          teste
+        </div>
+     </div>
+      <!--gráfico-->
       <div class="row">
         <div class="col-md-6">
           <canvas id="myChart"></canvas>
         </div>
         <div class="col-md-6">
           <canvas id="myChart2"></canvas>
+        </div>     
+     </div><br>
+     <div class="row">
+        <div class="col-md-6">
+          <canvas id="myChart3"></canvas>
+        </div>
+        <div class="col-md-6">
+          <canvas id="myChart4"></canvas>
         </div>     
      </div>
     </div>

@@ -2,7 +2,7 @@
 require_once("config.php");
 include("controller.php");
 
-$add = new Report();
-$add->add_company($con);
+$livro = new Livro();
+$livro->show_qde($con);
 
 ?>
