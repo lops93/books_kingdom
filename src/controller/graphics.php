@@ -38,8 +38,9 @@ print json_encode($data);
 }
 
 if ( isset($_GET["grafico3"])=='1' ) {
-  $query = "select distinct(titulo), preco, qtde_votos
-  from tbl_livros where genero <> 'none' order by preco desc limit 10;";
+  $query = "select count(distinct(titulo)) as qtde_titulo,count(qtde_votos) as votos, RIGHT(dt_publi,5) as ano from tbl_livros 
+  where RIGHT(dt_publi,5) <> 186
+  group by RIGHT(dt_publi,5) ;";
 
 $result = $con->query($query);
 

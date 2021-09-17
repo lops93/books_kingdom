@@ -105,18 +105,26 @@ $(document).ready(function() {
         }
       });  
 
-
-      var monthNames = [ "Jan", "Feb", "Mar", "Apr", "May"];
+      $.ajax({
+        url: "http://localhost:8000/src/controller/graphics.php?grafico3=1",
+        method: "GET",
+        success: function(data) {
+          //console.log(data);
+          var qtde_titulo = [];
+          var ano = [];
+          var votos = [];
     
-      var ctx = document.getElementById("myChart3");
-       ctx.height = 300;  
-      var myChart3 = new Chart(ctx, {
-          type: 'line',
-          data: {
-              labels: monthNames,
+          for(var i in data) {
+            qtde_titulo.push(data[i].qtde_titulo);
+            ano.push(data[i].ano);
+            votos.push(data[i].votos);
+          }
+    
+          var chartdata = {
+            labels: ano,
               datasets: [{
-                  label: "Net sales",
-                  data: [20,30,40,50,60],
+                  label: "Livros cadastrados",
+                  data: qtde_titulo,
                   pointHoverBackgroundColor:  'rgb(255, 99, 132)',  
                   backgroundColor: [
                       'rgba(255, 99, 132, 0.2)',
@@ -137,42 +145,36 @@ $(document).ready(function() {
                   borderWidth: 1
               },
               {
-                  label: "Gross sales",
-                  data: [20,60,40,80,70],
+                  label: "Quantidade de Votos",
+                  data: votos,
                   pointHoverBackgroundColor:  'rgb(66, 133, 244)',   
                   backgroundColor: [
-                      'rgb(66, 133, 244, 0.2)',                 
+                      'rgb(75,0,130, 0.2)',                 
                   ],
                   borderColor: [
-                      'rgb(66, 133, 244)',                  
+                      'rgb(75,0,130)',                  
                   ],
                   borderWidth: 1
               }]
+          };
+    
+          var ctx = document.getElementById('myChart3').getContext('2d');
+    
+          var myBarChart3 = new Chart(ctx, {
+            type: 'line',
+            options: {
+              title: {
+                  display: true,
+                  text: 'Quantidade de livros cadastrados de acordo com o ano de publicação'
+              }
           },
-          options: {
-            maintainAspectRatio: false,
-            title:{
-              display: "true",
-              text: "Sales ",
-              fontSize: "18"
-            },
-            tooltips:{
-              intersect:false,
-              mode: 'index'
-            },
-            hover: {
-              mode: 'index',
-              intersect: false
-            },
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero:true
-                    }
-                }]
-            }
-          }
-      });
+            data: chartdata
+          });
+        },
+        error: function(data) {
+          console.log(data);
+        }
+      });  
       
     
 });
