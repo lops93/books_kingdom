@@ -46,7 +46,29 @@
           <canvas id="myChart3"></canvas>
         </div>
         <div class="col-md-6">
-          <canvas id="myChart4"></canvas>
+          <h3>Dados estatisticos</h3>
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <th scope="row">média de valores</th>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <th scope="row">menor valor</th>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <th scope="row">Maior valor</th>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+            </tbody>
+          </table>
         </div>     
      </div>
     </div>
