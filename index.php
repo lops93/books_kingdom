@@ -12,6 +12,9 @@
   </header>
   <div class="main">
     <div class="container-fluid">
+      <div class="col">
+        <h4>Dashboard para análise de dados</h4>
+      </div>
       <!--informações -->
       <div class="row">
         <div class="col teste">
@@ -45,27 +48,29 @@
         <div class="col-md-6">
           <canvas id="myChart3"></canvas>
         </div>
-        <div class="col-md-6">
+        <!-- Tabela -->
+        <div class="col-md-6 dashboard">
           <h3>Dados estatisticos</h3>
+          <br>
           <table class="table table-bordered">
             <tbody>
               <tr>
                 <th scope="row">média de valores</th>
-                <td>-</td>
+                <td>
+                  <?php $livro = new Livro();
+                  $livro->getMedia();?> </td>
                 <td>-</td>
                 <td>-</td>
               </tr>
               <tr>
                 <th scope="row">menor valor</th>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
+                  <?php $livro = new Livro();
+                  $livro->getMinValor();?> 
               </tr>
               <tr>
                 <th scope="row">Maior valor</th>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
+                <?php $livro = new Livro();
+                $livro->getMaxValor();?> 
               </tr>
             </tbody>
           </table>

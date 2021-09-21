@@ -37,9 +37,41 @@ class Livro {
 
         }
 
+        function getMedia() {
+            global $con;
+            $query = "select sum(preco)/count(preco) as qtd from tbl_livros;";
+            $result = $con->query($query);
+            $row = $result->fetch_row();
 
+            echo  number_format($row[0],2);
+        }
 
+        function getMaxValor() {
+            global $con;
+            $query = "SELECT preco, titulo 
+            FROM tbl_livros
+            ORDER BY preco DESC 
+            LIMIT 1";
+            $result = $con->query($query);
+            $row = $result->fetch_row();
 
+            echo  "<td>".number_format($row[0],2)."</td>
+            <td>".$row[1]."</td>";
+        }
+
+        function getMinValor() {
+            global $con;
+            $query = "SELECT preco, titulo 
+            FROM tbl_livros
+            where preco > 0
+            ORDER BY preco 
+            LIMIT 1";
+            $result = $con->query($query);
+            $row = $result->fetch_row();
+
+            echo  "<td>".number_format($row[0],2)."</td>
+            <td>".$row[1]."</td>";
+        }
 
         function add_company($con){
             $empresa = $_GET['empresa'];
