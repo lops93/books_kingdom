@@ -17,22 +17,29 @@
       </div>
       <!--informações -->
       <div class="row">
-        <div class="col teste">
-          <h3>Número de livros cadastrados</h3>
+        <div class="col cards card-blue">
+          <h4>Total de Livros </h4>
           <?php 
           $livro = new Livro();
           $livro->getQtde();      
           ?>
         </div>
-        <div class="col teste">
-        <h3>Número de votos no total</h3>
+        <div class="col cards card-pink">
+        <i class="fas fa-chart-bar"></i>
+        <h4>Total de Votos</h4>
         <?php 
           $livro = new Livro();
           $livro->getVotos();      
           ?>
         </div>
-        <div class="col teste">
-          teste
+        <div class="col cards card-lemon">
+          <i class="fas fa-percentage"></i>
+          <h4>Percentagem de votos</h4>
+          <?php 
+            $livro = new Livro();
+            $livro->getVotosRec();      
+          ?>
+          <br><span>*percentagem de livros que possuem votos</span>
         </div>
      </div>
       <!--gráfico-->

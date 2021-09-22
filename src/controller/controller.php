@@ -37,6 +37,17 @@ class Livro {
 
         }
 
+         function getVotosRec() {
+            global $con;
+            $query = "select (select count(distinct titulo) from tbl_livros where qtde_votos > 0) / 
+             (select count(distinct titulo) from tbl_livros)  * 100 as perc;";
+            $result = $con->query($query);
+            $row = $result->fetch_row();
+
+            echo number_format($row[0],1).'%';;
+
+        }
+
         function getMedia() {
             global $con;
             $query = "select sum(preco)/count(preco) as qtd from tbl_livros;";
