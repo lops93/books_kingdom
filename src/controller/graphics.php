@@ -38,7 +38,7 @@ print json_encode($data);
 }
 
 if ( isset($_GET["grafico3"])=='1' ) {
-  $query = "select count(distinct(titulo)) as qtde_titulo,sum(qtde_votos)/count(qtde_votos) as votos, RIGHT(dt_publi,5) as ano from tbl_livros 
+  $query = "select count(distinct(titulo)) as qtde_titulo,avg(qtde_votos) as votos, RIGHT(dt_publi,5) as ano from tbl_livros 
   where RIGHT(dt_publi,5) <> 186
   group by RIGHT(dt_publi,5) ;";
 

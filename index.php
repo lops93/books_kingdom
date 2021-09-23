@@ -18,6 +18,7 @@
       <!--informações -->
       <div class="row">
         <div class="col cards card-blue">
+          <i class="far fa-folder"></i>
           <h4>Total de Livros </h4>
           <?php 
           $livro = new Livro();
