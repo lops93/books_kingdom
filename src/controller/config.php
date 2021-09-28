@@ -1,6 +1,6 @@
 <?php
 #conexao
-$con = new mysqli("localhost","root","", "project"); 
+$con = new mysqli("localhost","root","root", "project"); 
 
 
 ?>

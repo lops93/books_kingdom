@@ -84,7 +84,8 @@ class Livro {
             <td>".$row[1]."</td>";
         }
 
-        function add_company($con){
+        function cad_livro(){
+            global $con;
             $empresa = $_GET['empresa'];
             $cnpj = $_GET['cnpj'];
             $setor = $_GET['setor'];
