@@ -86,20 +86,27 @@ class Livro {
 
         function cad_livro(){
             global $con;
-            $empresa = $_GET['empresa'];
-            $cnpj = $_GET['cnpj'];
-            $setor = $_GET['setor'];
-            $plano = $_GET['plano'];
-            $dt_inicio = $_GET['data_inicio'];
+            $titulo = $_GET['titulo'];
+            $autor = $_GET['autor'];
+            $avaliacao = $_GET['avaliacao'];
+            $qtde_votos = $_GET['qtde_votos'];
+            $preco = $_GET['preco'];
+            $genero = $_GET['genero'];
+            $editora = $_GET['editora'];
+            $nmro_de_paginas = $_GET['nmro_de_paginas'];
+            $idioma = $_GET['idioma'];
+            $descricao = $_GET['descricao'];
+            $dt_publi = $_GET['dt_publi'];
     
-            $query = "insert into  " . $this->table . " values(null, '".$cnpj."','".$empresa."','".$setor."',".$plano.",'".$dt_inicio."',null );";
-    
+            $query = "insert into  " . $this->table . " values
+            (null, '".$titulo."','".$autor."','".$avaliacao."',".$qtde_votos.",'".$preco."',".$descricao."', ".$editora."', 
+            ".$nmro_de_paginas.",".$genero.",".$idioma.",".$dt_publi.");";
             $result = $con->query($query);
     
             if ($result === TRUE) {
-                echo "A empresa ".$empresa." foi inserida na base de clientes com sucesso";
-                $log_dados = new Report();
-                $log_dados->log_dados($query);
+                echo "O livro ".$titulo." foi inserid0 na base de ddos com sucesso";
+                //$log_dados = new Report();
+                //$log_dados->log_dados($query);
             }
             else{
                 echo "Houve um problema ao inserir o registro<br> ".mysqli_error($con);

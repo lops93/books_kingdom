@@ -21,7 +21,8 @@
                     </div>
                     <div class="form-group">
                         <label for="avaliacao" class="col-sm-2 col-form-label">Avaliação</label>
-                        <input type="range" class="form-control form-cadastro" maxlength="100" id="avaliacao">
+                        <input type="range" class="form-control form-cadastro" min="0" max="5" step="0.1" id="avaliacao" onchange="rangeInfo.value=value">
+                        <output id="rangeInfo">2.5</output>
                     </div>
                     <div class="form-group">
                         <label for="qtde_votos" class="col-sm-2 col-form-label">Quantidade de votos</label>
