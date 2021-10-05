@@ -34,9 +34,7 @@
                     </div>
                     <div class="form-group">
                         <label for="genero" class="col-sm-2 col-form-label">Genero</label>
-                        <select class="form-control form-cadastro" id="setor">
-                            <option value="genero">genero</option>
-                        </select>
+                         <input type="text" class="form-control form-cadastro" id="genero">
                     </div>
                     <div class="form-group">
                         <label for="editora" class="col-sm-2 col-form-label">Editora</label>
@@ -61,7 +59,7 @@
                     <button class="btn btn-success" id="btn-save">Salvar</button>
                     </div>
                 </div><br><br><hr>
-                <table id="tbl_reg" class="table table-striped table-bordered" style="width:100%">
+                <table id="" class="table table-striped table-bordered" style="width:100%">
             <thead>
                 <tr>
                     <th>Titulo</th>
