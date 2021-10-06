@@ -99,12 +99,12 @@ class Livro {
             $dt_publi = $_GET['dt_publi'];
     
             $query = "insert into  " . $this->table . " values
-            (null, '".$titulo."','".$autor."','".$avaliacao."',".$qtde_votos.",'".$preco."',".$descricao."', ".$editora."', 
-            ".$nmro_de_paginas.",".$genero.",".$idioma.",".$dt_publi.");";
+            (null, '".$titulo."','".$autor."',".$avaliacao.",".$qtde_votos.",".$preco.",'".$descricao."', '".$editora."', 
+            ".$nmro_de_paginas.",'".$genero."','".$idioma."','".$dt_publi."');";
             $result = $con->query($query);
     
             if ($result === TRUE) {
-                echo "O livro ".$titulo." foi inserid0 na base de ddos com sucesso";
+                echo "O livro ".$titulo." foi inserid0 na base de dados com sucesso";
                 //$log_dados = new Report();
                 //$log_dados->log_dados($query);
             }
