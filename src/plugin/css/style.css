@@ -64,13 +64,6 @@ header h1 {
   }
 }
 
-#sub-menu_cadastro {
-  display: none;
-}
-
-#sub-menu_relatorio {
-  display: none;
-}
 /*  sidebar */
 
 /*  form */
@@ -82,33 +75,6 @@ header h1 {
 /*  form */
 
 /*  Tabela relatorio */
-.tbl_relatorio_filter input {
-  border-radius: 10px;
-  border: 3px solid #a0b7de;
-}
-
-.tbl_livro {
-  border-collapse: collapse;
-  margin: 0px -7px;
-  border-left: 1px solid rgb(43, 40, 54);
-  border-right: 1px solid rgb(43, 40, 54);
-}
-.tbl_livro thead {
-  background: linear-gradient(rgb(90, 83, 114), rgb(43, 40, 54));
-  border-left: 1px solid rgb(43, 40, 54);
-  border-right: 1px solid rgb(43, 40, 54);
-  border-top: 1px solid #555;
-  border-bottom: 1px solid #333;
-  box-shadow: inset 0 1px 0 #999;
-  color: #fff;
-  font-weight: bold;
-  padding: 10px 15px;
-  position: relative;
-  text-shadow: 0 1px 0 #000;
-}
-[type="search"] {
-  outline-color: rgb(88, 245, 237);
-}
 
 table.dataTable thead .sorting_asc {
   background-image: url("../../../public/img/sort_asc.png") !important;
@@ -123,7 +89,7 @@ table.dataTable thead .sorting_desc {
   color: #fff;
 }
 /*  Tabela relatorio */
-/*  informações página  */
+/*  informações página  inicial*/
 
 .cards {
   margin: 1%;
@@ -177,4 +143,29 @@ table.dataTable thead .sorting_desc {
   box-shadow: 0 0.46875rem 2.1875rem rgb(4 9 20 / 5%),
     0 0.9375rem 1.40625rem rgb(4 9 20 / 5%),
     0 0.25rem 0.53125rem rgb(4 9 20 / 5%), 0 0.125rem 0.1875rem rgb(4 9 20 / 5%);
+}
+
+/*tabela da página de cadastro */
+.page-link {
+  position: relative;
+  display: block;
+  padding: 0.5rem 0.75rem;
+  margin-left: -1px;
+  line-height: 1.25;
+  color: #39bb89;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+}
+
+.page-item.active .page-link {
+  color: #fff;
+  background-color: #39bb89;
+  border-color: #39bb89;
+}
+/* icones da tabela de deletar e editar */
+.icon-red {
+  color: #b81b1b;
+}
+.icon-blue {
+  color: #339ce2;
 }

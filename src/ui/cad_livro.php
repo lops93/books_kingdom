@@ -1,4 +1,11 @@
-<?php include("../src/controller/controller.php");?>
+<?php include("../../src/controller/controller.php");
+        if (isset($_GET["page"])) {    
+            $page  = $_GET["page"];    
+        }    
+        else {    
+          $page=1;    
+        }   
+        ?>
 <!DOCTYPE html>
 <html>
 <?php include("head.php");?>
@@ -59,20 +66,23 @@
                     <button class="btn btn-success" id="btn-save">Salvar</button>
                     </div>
                 </div><br><br><hr>
-                <table id="" class="table table-striped table-bordered" style="width:100%">
+                <table id="tbl_livro_dados" class="table table-striped table-bordered" style="width:100%">
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Titulo</th>
                     <th>Autor</th>
-                    <th>Avaliação</th>
-                    <th>Numero de votos</th>
+                    <th>deletar</th>
+                    <th>editar</th>
                 </tr>
             </thead>
             <tbody>
+             <?php
+              $show_tbl= new Livro();
+              $show_tbl->getTblFuncoes($page);
+             ?>
+             </div>
 
-            </tbody>
-        </table>
-        </div>
 
 </body>
 </html>

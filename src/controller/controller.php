@@ -121,18 +121,62 @@ class Livro {
                     file_put_contents($this->log, $texto.PHP_EOL);
                 }
             }
+        function  getTblFuncoes($page){
+            global $con;
+                $reg_por_pag = 10; 
+                 $start_from = ($page-1) * $reg_por_pag;     
+                $query = "SELECT id, titulo, autor FROM " . $this->table . " LIMIT ".$start_from.",". $reg_por_pag;
+                $result = $con->query($query);
+                if($result){
+                     while ($row = mysqli_fetch_array($result)) {
+                     echo '<tr>
+                     <td>'.$row["id"].'</td><td>'.$row["titulo"].'</td><td>'.$row["autor"].'</td>
+                     <td><a class="delete" id="'.$row["id"].'" titulo="'.$row["titulo"].'"><i class="fas fa-trash-alt icon-red"></i></a></td>
+                     <td><i class="fas fa-edit icon-blue"></i></td>
+                     </tr>'; }
+                }else{
+                    echo("Erro: " .mysqli_error($con));
+                }
+                echo '</tbody>
+                     </table>
+                     ';
+                $query = "SELECT COUNT(*) FROM " . $this->table;     
+                $rs_result = mysqli_query($con, $query);     
+                $row = mysqli_fetch_row($rs_result);     
+                $total_records = $row[0];     
+          
+                echo "</br>";     
+                // Number of pages required.   
+                $total_pages = ceil($total_records / $reg_por_pag);     
+                 $pagLink = "";       
+         echo '<nav aria-label="Page navigation example">
+        <ul class="pagination">';
+        if($page>=2){   
+            echo "<li class='page-item'><a class='page-link' href='cad_livro.php?page=".($page-1)."'>  &laquo; </a></li>";   
+        }       
+                   
+        for ($i=1; $i<=$total_pages; $i++) {   
+          if ($i == $page) {   
+              $pagLink .= " <li class='page-item active'><a class = ' page-link' href='cad_livro.php?page="  
+                                                .$i."'>".$i." </a></li>
+                             <li class='page-item active'  aria-current='page'>";   
+          }               
+          else  {   
+              $pagLink .= "<li class='page-item'><a class='page-link' href='cad_livro.php?page=".$i."'>   
+                                                ".$i." </a></li>";     
+          }   
+        };     
+        echo $pagLink;   
+  
+        if($page<$total_pages){   
+            echo "<li class='page-item'><a class='page-link'  href='cad_livro.php?page=".($page+1)."'>  &raquo; </a></li>";   
+        }   
+
+        echo'</ul>
+            </nav>';
+    }
 }
 
-function  select_plan($con){
-        $qplano = "SELECT * FROM plano";
-        $result = $con->query($qplano);
-        if($result){
-            while ($row = mysqli_fetch_array($result)) {
-                echo '<option value="'.$row["cod_plano"].'">'.$row["nome_plano"].'</option>';
-            }
-        }else{
-            echo("Erro: " .mysqli_error($con));
-        }
-    }
+
 
     ?>

@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  //adicionar um livro
   $("#btn-save").click(function () {
     var titulo = $("#titulo").val();
     var autor = $("#autor").val();
@@ -72,5 +73,42 @@ $(document).ready(function () {
         }
       );
     }
+  });
+  //deletar um livro
+  $(".delete").click(function () {
+    var id = $(this).attr("id");
+    var titulo = $(this).attr("titulo");
+    //variavel que pega o atributo(attr) da classe delete(this)
+    $.confirm({
+      title: " ",
+      content: "Tem certeza que deseja excluir o livro " + titulo,
+      type: "red",
+      typeAnimated: true,
+      buttons: {
+        tryAgain: {
+          text: "excluir",
+          btnClass: "btn-red",
+          action: function () {
+            $.post(
+              "../../src/controller/deleta_livro.php?&titulo=" + id,
+              function (data, status) {
+                $.alert({
+                  title: "Registro excluido",
+                  content: "O Livro" + data + "foi excluido",
+                  type: "red",
+                  typeAnimated: true,
+                  buttons: {
+                    ok: function () {
+                      $(location).attr("href", "cad_livro.php");
+                    },
+                  },
+                });
+              }
+            );
+          },
+        },
+        cancelar: function () {},
+      },
+    });
   });
 });
