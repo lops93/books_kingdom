@@ -1,10 +1,24 @@
-<?php include("src/controller/controller.php");?>
+<?php 
+	/**
+	*		  Página Inicial para um projeto de monografia para
+  *     requisito de diploma do curso de Inteligência de 
+  *     negócios
+	* 		@author Viviam Lopes Rodrigues
+	* 		@package Books Kingdom
+	* 		@create  set/2021
+	*/
+
+/* inclusão da página com as funções da aplicação */
+include("src/controller/controller.php");
+?>
+
 <!DOCTYPE html>
 <html>
+<!--  inclui a configuração da página html da tag head-->
 <?php include("src/ui/head.php");?>
 
 <body>
-
+<!--  inclui o menu lateral com os links -->
   <?php include("src/ui/sidebar.php");?>
   <!-- Conteudo da Página -->
   <header>
@@ -43,7 +57,7 @@
           <br><span>*percentagem de livros que possuem votos</span>
         </div>
      </div>
-      <!--gráfico-->
+      <!--gráficos-->
       <div class="row">
         <div class="col-md-6">
           <canvas id="myChart"></canvas>
@@ -85,9 +99,6 @@
         </div>     
      </div>
     </div>
-    <footer>
-      <a href="sobre.html">Sobre nós</a>
-    </footer>
   </div>
 
 </body>
