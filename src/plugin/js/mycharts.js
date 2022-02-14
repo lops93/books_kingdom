@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  //Grafico de barras responsavel por exibir os livros mais votados
   $.ajax({
     url: "http://localhost:8000/src/controller/graphics.php?grafico1=1",
     method: "GET",
@@ -44,6 +45,8 @@ $(document).ready(function () {
       console.log(data);
     },
   });
+
+  //gráfico de pizza responsável por exibir os gênenos literários mais populares
   $.ajax({
     url: "http://localhost:8000/src/controller/graphics.php?grafico2=1",
     method: "GET",
@@ -101,7 +104,9 @@ $(document).ready(function () {
       console.log(data);
     },
   });
-
+  // grafico de barras e linhas responsável por mostrar a
+  //quantidade de livros cadastrados de acordo com o ano de publicação
+  //com a mádia de votos
   $.ajax({
     url: "http://localhost:8000/src/controller/graphics.php?grafico3=1",
     method: "GET",

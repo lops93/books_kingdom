@@ -34,6 +34,13 @@ $(document).ready(function () {
         type: "red",
         typeAnimated: true,
       });
+    } else if (avaliacao > 0 && qtde_votos == "") {
+      $.alert({
+        title: "Campo Vazio!",
+        content: "Digite a quantidade de votos",
+        type: "red",
+        typeAnimated: true,
+      });
     } else {
       $.post(
         "../../src/controller/add_livro.php?&titulo=" +
@@ -90,11 +97,11 @@ $(document).ready(function () {
           btnClass: "btn-red",
           action: function () {
             $.post(
-              "../../src/controller/deleta_livro.php?&titulo=" + id,
+              "../../src/controller/deleta_livro.php?&id=" + id,
               function (data, status) {
                 $.alert({
                   title: "Registro excluido",
-                  content: "O Livro" + data + "foi excluido",
+                  content: data,
                   type: "red",
                   typeAnimated: true,
                   buttons: {

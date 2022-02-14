@@ -1,4 +1,10 @@
 <?php
+/**
+*	  Exibe os dados na tabela de livros
+* 	  @author Viviam Lopes Rodrigues
+* 	  @package Books Kingdom/controller
+* 	  @create  set/2021
+ */
 include_once("controller.php");
 
 $livro = new Livro();

@@ -1,4 +1,10 @@
 <?php
+/**
+*	  Exibe os gráficos da página inicial
+* 	  @author Viviam Lopes Rodrigues
+* 	  @package Books Kingdom/controller
+* 	  @create  set/2021
+ */
 header('Content-Type: application/json');
 include_once('config.php');
 

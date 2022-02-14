@@ -1,4 +1,16 @@
-<?php include("../../src/controller/controller.php");
+<?php 
+/**
+*	  Página com o formulário de inclusão
+*     de registros na base de dados tbl_livros
+*     e com uma tabela que possibilita excluir
+*     qualquer livro da base.
+* 	  @author Viviam Lopes Rodrigues
+* 	  @package Books Kingdom/ui
+* 	  @create  set/2021
+ */
+/* inclusão da página com as funções da aplicação */
+include("../../src/controller/controller.php");
+/*número da pagina referente a tabela que o usuário esta acessando */
         if (isset($_GET["page"])) {    
             $page  = $_GET["page"];    
         }    
@@ -8,15 +20,19 @@
         ?>
 <!DOCTYPE html>
 <html>
+ <!--  inclui a configuração da página html da tag head-->
 <?php include("head.php");?>
 
 <body>
+<!--  inclui o menu lateral com os links -->
     <?php include("sidebar.php");?>
+<!-- Conteudo da Página -->
     <header>
-        <h1>Cadastrado de Livros</h1>
+        <h1>Cadastro de Livros</h1>
     </header>
     <div class="main">
         <div class="row">
+                   <!--Formulario -->
                     <div class="col-md-12">
                         <div class="form-group">
                         <label for="titulo" class="col-sm-2 col-form-label">Titulo</label>
@@ -49,7 +65,7 @@
                     </div>
                     <div class="form-group">
                         <label for="nmro_de_paginas" class="col-sm-2 col-form-label">Número de Páginas</label>
-                        <input type="text" class="form-control form-cadastro" maxlength="100" id="nmro_de_paginas">
+                        <input type="number" class="form-control form-cadastro" maxlength="100" id="nmro_de_paginas">
                     </div>
                     <div class="form-group">
                         <label for="idioma" class="col-sm-2 col-form-label">Idioma</label>
@@ -66,6 +82,7 @@
                     <button class="btn btn-success" id="btn-save">Salvar</button>
                     </div>
                 </div><br><br><hr>
+                <!-- Tabela com opção de excluir registros -->
                 <table id="tbl_livro_dados" class="table table-striped table-bordered" style="width:100%">
             <thead>
                 <tr>
@@ -73,10 +90,10 @@
                     <th>Titulo</th>
                     <th>Autor</th>
                     <th>deletar</th>
-                    <th>editar</th>
                 </tr>
             </thead>
             <tbody>
+        <!-- chama o metódo da classe livro responsavel por mostrar os dados da tabela -->
              <?php
               $show_tbl= new Livro();
               $show_tbl->getTblFuncoes($page);

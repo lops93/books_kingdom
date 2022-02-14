@@ -169,3 +169,8 @@ table.dataTable thead .sorting_desc {
 .icon-blue {
   color: #339ce2;
 }
+
+#btn-save {
+  margin-left: 25%;
+  width: 50%;
+}
